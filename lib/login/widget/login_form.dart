@@ -47,14 +47,25 @@ class _LoginFormState extends State<LoginForm> {
                 controller: _passwordController,
                 obscureText: true,
               ),
-              ElevatedButton(
-                onPressed:
-                    state is! LoginLoadingState ? _onLoginButtonPressed : null,
-                child: Text('Login'),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: ElevatedButton(
+                  child: const Text("Login"),
+                  onPressed: () {
+                    if(state is LoginLoadingState){
+                      const CircularProgressIndicator();            
+                    }
+                    else{
+                      _onLoginButtonPressed();
+                      if(state is LoginSuccessState){
+                        print(LoginSuccessState(username: _usernameController.text).toString());
+                      }
+                    }
+                  }),
               ),
               Container(
                 child:
-                    state is LoginLoadingState ? CircularProgressIndicator() : null,
+                    state is LoginLoadingState ? const CircularProgressIndicator() : null,
               ),
             ],
           )

@@ -29,7 +29,7 @@ class LoginSuccessState extends LoginState{
   List<Object> get props => [username];
 
   @override
-  String toString() => 'Hi!! { $username}'; 
+  String toString() => 'Hi!! $username'; 
 }
 
 class LoginErrorState extends LoginState{
