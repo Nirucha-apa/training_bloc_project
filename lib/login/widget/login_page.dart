@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_bloc_project/login/bloc/login_bloc.dart';
 
@@ -23,8 +22,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LoginForm(
+    return Scaffold(
+        appBar: AppBar(title: const Text("LOGIN")),
+        body: LoginForm(
         loginBloc : _loginBloc,
+      ),
       );
   }
 

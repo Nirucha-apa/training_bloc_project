@@ -16,19 +16,19 @@ void main() {
         create: (BuildContext context) => FoodBloc(),
       ),
     ],
-  child: const HomeSreen(),
+  child: const HomePage(),
 )
   );
 }
 
-class HomeSreen extends StatefulWidget {
-  const HomeSreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomeSreen> createState() => _HomeSreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeSreenState extends State<HomeSreen> {
+class _HomePageState extends State<HomePage> {
   late FoodBloc bloc;
 
   @override
@@ -41,7 +41,7 @@ class _HomeSreenState extends State<HomeSreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text("LOGIN")),
+        appBar: AppBar(title: const Text("Home Page")),
         body: const LoginPage(),
       ),
     );
