@@ -9,22 +9,22 @@ class AppRouter{
 
   static const home = '/home';
   static const login = '/login';
-  static const food = '/food';
-
+  static foodParams([String? username]) => '/food/${username ?? ':username'}';
 
   static Widget _homePageRouteBuilder(BuildContext context, GoRouterState state) => const HomePage();
   static Widget _loginPageRouteBuilder(BuildContext context, GoRouterState state) => const LoginPage();
-  static Widget _foodRouteBuilder(BuildContext context, GoRouterState state) => const FoodPage(uaername: '',);
+  static Widget _foodRouteBuilder(BuildContext context, GoRouterState state) => FoodPage(username: state.pathParameters["username"]!,);
 
   //error path 
   //static Widget errorWidget(BuildContext context, GoRouterState state) => const NotFoundPage();
 
   // use this in [MaterialApp.router]
   static final GoRouter _router = GoRouter(
+    initialLocation: login,
     routes: <GoRoute>[
-      GoRoute(path: home, builder: _homePageRouteBuilder),
-      GoRoute(path: login, builder: _loginPageRouteBuilder),
-      GoRoute(path: food, builder: _foodRouteBuilder),
+      GoRoute(name: "home",path: home, builder: _homePageRouteBuilder),
+      GoRoute(name: "login",path: login, builder: _loginPageRouteBuilder),
+      GoRoute(name: "food",path: foodParams(), builder: _foodRouteBuilder),
     ],
     //errorBuilder: errorWidget,
   );

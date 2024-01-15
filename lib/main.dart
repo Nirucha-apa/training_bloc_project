@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_bloc_project/food/bloc/food_bloc.dart';
 import 'package:training_bloc_project/login/bloc/login_bloc.dart';
 
-import 'login/widget/login_page.dart';
+import 'config/routes/app_routes.dart';
 
 void main() {
   runApp(
@@ -39,11 +39,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Home Page")),
-        body: const LoginPage(),
-      ),
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
     );
+    // return MaterialApp(
+    //   home: Scaffold(
+    //     appBar: AppBar(title: const Text("Home Page")),
+    //     body: const LoginPage(),
+    //   ),
+    // );
   }
 }

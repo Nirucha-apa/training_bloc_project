@@ -7,9 +7,9 @@ import '../bloc/food_state.dart';
 import 'food_card.dart';
 
 class FoodPage extends StatefulWidget {
-  final String uaername;
+  final String username;
 
-  const FoodPage({Key? key, required this.uaername}) : super(key: key);
+  const FoodPage({Key? key, required this.username}) : super(key: key);
 
   @override
   State<FoodPage> createState() => _FoodPageState();
@@ -17,7 +17,7 @@ class FoodPage extends StatefulWidget {
 
 class _FoodPageState extends State<FoodPage> {
   late FoodBloc foodBloc;
-  String get _username  => widget.uaername;
+  String get _username  => widget.username;
 
   @override
   void initState() {
@@ -28,7 +28,9 @@ class _FoodPageState extends State<FoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_username)),
+      appBar: AppBar(
+        title: Text('Hi!! ${_username}'),
+        backgroundColor: Colors.orange,),
       body: BlocConsumer<FoodBloc, FoodState>(
           listener: (context, state) {
           },

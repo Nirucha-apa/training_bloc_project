@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:training_bloc_project/login/bloc/login_bloc.dart';
 import 'package:training_bloc_project/login/bloc/login_event.dart';
 import 'package:training_bloc_project/login/bloc/login_state.dart';
@@ -53,12 +54,13 @@ class _LoginFormState extends State<LoginForm> {
                   child: const Text("Login"),
                   onPressed: () {
                     if(state is LoginLoadingState){
-                      const CircularProgressIndicator();            
+                      const CircularProgressIndicator();                  
                     }
                     else{
-                      _onLoginButtonPressed();
+                        _onLoginButtonPressed();
                       if(state is LoginSuccessState){
                         print(LoginSuccessState(username: _usernameController.text).toString());
+                        context.goNamed("food",pathParameters: {"username": _usernameController.text});
                       }
                     }
                   }),

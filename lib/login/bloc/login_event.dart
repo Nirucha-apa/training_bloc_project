@@ -19,3 +19,8 @@ class LoginPsaawordEvent extends LoginEvent{
   @override
   String toString() => 'username: {$username} , password: {$password}';
 }
+
+class LogOutEvent extends LoginEvent{
+  @override
+  List<Object?> get props => [];
+}
