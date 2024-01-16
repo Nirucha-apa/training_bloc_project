@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:training_bloc_project/food/bloc/food_bloc.dart';
 
 import '../bloc/food_event.dart';
@@ -29,7 +30,12 @@ class _FoodPageState extends State<FoodPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hi!! ${_username}'),
+        title: Row(
+          children: [
+            Text('Hi...!! ${_username}',style: TextStyle(color: Colors.white,fontSize: 18)),
+          ],
+        ),
+        titleTextStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
         backgroundColor: Colors.orange,),
       body: BlocConsumer<FoodBloc, FoodState>(
           listener: (context, state) {
@@ -43,7 +49,7 @@ class _FoodPageState extends State<FoodPage> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return FoodCard(food: state.foods[index],);
+                    return FoodCard(food: state.foods[index]);
                   },
                   itemCount: state.foods.length,
                 ),
@@ -73,6 +79,17 @@ class _FoodPageState extends State<FoodPage> {
               ),
             );
           },
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.orange,
+          child: Center(
+            child: IconButton(
+              icon: const Icon(Icons.logout,color: Colors.white),
+              onPressed: () {
+                context.goNamed('login');
+              },
+              ),
+          )
         ),
     );
   }

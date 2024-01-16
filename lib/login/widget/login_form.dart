@@ -40,34 +40,38 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'username'),
+                decoration: const InputDecoration(
+                  labelText: 'username',
+                  prefixIcon: Icon(Icons.account_circle)
+                  ),
                 controller: _usernameController,
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'password'),
+                decoration:const InputDecoration(
+                  labelText: 'password',
+                  prefixIcon: Icon(Icons.lock)),
                 controller: _passwordController,
                 obscureText: true,
               ),
               Padding(
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
-                  child: const Text("Login"),
+                  child: const Text("Login",style: TextStyle(color: Colors.white,fontSize: 18),),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.orange,),
                   onPressed: () {
+                    print(state);
+                    _onLoginButtonPressed();
+                    print(LoginSuccessState(username: _usernameController.text).toString());
+                    context.goNamed("food",pathParameters: {"username": _usernameController.text});
+                    
                     if(state is LoginLoadingState){
                       const CircularProgressIndicator();                  
                     }
-                    else{
-                        _onLoginButtonPressed();
-                      if(state is LoginSuccessState){
-                        print(LoginSuccessState(username: _usernameController.text).toString());
-                        context.goNamed("food",pathParameters: {"username": _usernameController.text});
-                      }
+                    if(state is LoginErrorState)
+                    {
+                      Text(state.errorMessage);
                     }
                   }),
-              ),
-              Container(
-                child:
-                    state is LoginLoadingState ? const CircularProgressIndicator() : null,
               ),
             ],
           )

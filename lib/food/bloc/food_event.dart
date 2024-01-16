@@ -8,3 +8,15 @@ class FetchDataEvent extends FoodEvent {
   @override
   List<Object?> get props => [];
 }
+
+class AddFoodEvent extends FoodEvent{
+  final int item;
+
+  const AddFoodEvent({
+    required this.item
+  });
+
+  @override
+  List<Object?> get props => [item];
+
+}

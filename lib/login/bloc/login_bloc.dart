@@ -15,7 +15,7 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
       emit(LoginSuccessState(username: event.username));
     }
     else{
-      emit(const LoginErrorState(errorMessage: 'something went very wrong!!'));
+      emit(const LoginErrorState(errorMessage: 'something went very wrong!!,Login Again!!'));
     }
   }
 }

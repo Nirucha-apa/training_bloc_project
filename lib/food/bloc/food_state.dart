@@ -39,3 +39,13 @@ class FoodSuccessFetchDataState extends FoodState {
   @override
   List<Object?> get props => [];
 }
+
+class AddFoodState extends FoodState {
+  final int item;
+  const AddFoodState({
+    required this.item,
+  });
+
+  @override
+  List<Object?> get props => [item];
+}
